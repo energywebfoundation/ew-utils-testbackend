@@ -21,7 +21,8 @@ const storage = new CustomStorage(
         Entity.SUPPLY,
         Entity.AGREEMENT,
         Entity.MATCHER,
-        Entity.ORIGIN_LOOKUP_TO_MARKET_LOOKUP_MAPPING
+        Entity.ORIGIN_LOOKUP_TO_MARKET_LOOKUP_MAPPING,
+        Entity.ORIGIN_LOOKUP_TO_ASSET_LOOKUP_MAPPING
     ],
     new FileAdapter('db.json')
 );
@@ -152,6 +153,20 @@ app.put('/OriginContractLookupMarketLookupMapping/:id', cors(corsOptions), (req,
     console.log(`PUT - OriginContractLookupMarketLookupMapping ${req.params.id}`);
 
     storage.set(Entity.ORIGIN_LOOKUP_TO_MARKET_LOOKUP_MAPPING, req.params.id && req.params.id.toLowerCase(), req.body);
+
+    res.send('success');
+});
+
+app.get('/OriginContractLookupAssetLookupMapping/:id', cors(corsOptions), (req, res) => {
+    console.log(`GET - OriginContractLookupAssetLookupMapping ${req.params.id}`);
+
+    res.send(storage.get(Entity.ORIGIN_LOOKUP_TO_ASSET_LOOKUP_MAPPING, req.params.id && req.params.id.toLowerCase()));
+});
+
+app.put('/OriginContractLookupAssetLookupMapping/:id', cors(corsOptions), (req, res) => {
+    console.log(`PUT - OriginContractLookupAssetLookupMapping ${req.params.id}`);
+
+    storage.set(Entity.ORIGIN_LOOKUP_TO_ASSET_LOOKUP_MAPPING, req.params.id && req.params.id.toLowerCase(), req.body);
 
     res.send('success');
 });

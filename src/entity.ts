@@ -5,5 +5,6 @@ export enum Entity {
     SUPPLY = 'supply',
     AGREEMENT = 'agreement',
     MATCHER = 'matcher',
-    ORIGIN_LOOKUP_TO_MARKET_LOOKUP_MAPPING = 'originLookupToMarketLookupMapping'
+    ORIGIN_LOOKUP_TO_MARKET_LOOKUP_MAPPING = 'originLookupToMarketLookupMapping',
+    ORIGIN_LOOKUP_TO_ASSET_LOOKUP_MAPPING = 'originLookupToAssetLookupMapping'
 }
