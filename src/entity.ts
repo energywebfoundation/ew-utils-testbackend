@@ -1,5 +1,6 @@
 export enum Entity {
     PRODUCING_ASSET = 'producingAsset',
+    PRODUCING_ASSET_NOT_BOUND ='producingAssetNotBound',
     CONSUMING_ASSET = 'consumingAsset',
     DEMAND = 'demand',
     SUPPLY = 'supply',

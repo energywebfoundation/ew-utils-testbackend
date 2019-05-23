@@ -16,6 +16,7 @@ const corsOptions = Object.freeze({
 const storage = new CustomStorage(
     [
         Entity.PRODUCING_ASSET,
+        Entity.PRODUCING_ASSET_NOT_BOUND,
         Entity.CONSUMING_ASSET,
         Entity.DEMAND,
         Entity.SUPPLY,
@@ -59,6 +60,19 @@ app.put('/ProducingAsset/:contractAddress/:id', cors(corsOptions), (req, res) =>
     storage.set(Entity.PRODUCING_ASSET, contractAddress, Object.assign(existingData, {
         [req.params.id]: req.body
     }));
+
+    res.send('success');
+});
+
+app.get('/ProducingAsset/:id', cors(corsOptions), (req, res) => {
+    console.log(`GET - ProducingAssetNotBound ${req.params.id}`);
+    res.send(storage.get(Entity.PRODUCING_ASSET_NOT_BOUND, req.params.id));
+});
+
+app.put('/ProducingAsset/:id', cors(corsOptions), (req, res) => {
+    console.log(`PUT - ProducingAssetNotBound ${req.params.id}`);
+
+    storage.set(Entity.PRODUCING_ASSET_NOT_BOUND, req.params.id, req.body);
 
     res.send('success');
 });
