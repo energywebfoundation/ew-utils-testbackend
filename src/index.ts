@@ -8,10 +8,7 @@ import ENV from '../env.json';
 
 const app = express();
 
-const corsOptions = Object.freeze({
-    origin: ENV.CORS_ORIGIN,
-    optionsSuccessStatus: 200
-});
+const corsOptions = Object.freeze({});
 
 const storage = new CustomStorage(
     [
