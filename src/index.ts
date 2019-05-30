@@ -108,6 +108,14 @@ app.put('/Demand/:id', (req, res) => {
     res.send('success');
 });
 
+app.delete('/Demand/:id', (req, res) => {
+    console.log(`DELETE - Demand ${req.params.id}`);
+
+    storage.del(Entity.DEMAND, req.params.id);
+
+    res.send('success');
+});
+
 /**
  * Supply
  */

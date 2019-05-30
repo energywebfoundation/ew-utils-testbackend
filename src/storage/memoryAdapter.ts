@@ -10,4 +10,8 @@ export class MemoryAdapter extends Adapter {
     async set(key, value) {
         this._storage[key] = value;
     }
+
+    async del(key) {
+        delete this._storage[key];
+    }
 }

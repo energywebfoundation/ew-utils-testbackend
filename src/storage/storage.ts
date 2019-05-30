@@ -46,4 +46,12 @@ export class CustomStorage {
             })
         );
     }
+
+    del(type: Entity, key: string) {
+        if (arguments.length > 2) {
+            throw new Error('Storage::del()::Too many arguments passed');
+        }
+
+        return this._adapter.del(type)[key];
+    }
 }
