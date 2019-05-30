@@ -1,12 +1,12 @@
-import { Entity } from '../entity';
+import { ENTITY } from '../enums/Entity';
 import { IAdapter } from './adapter';
-import { StatusCodes } from '../enums';
+import { STATUS_CODES } from '../enums/StatusCodes';
 
 export class CustomStorage {
-    _dataTypes: Entity[];
+    _dataTypes: ENTITY[];
     _adapter: IAdapter = null;
 
-    constructor(dataTypes: Entity[], adapter: IAdapter) {
+    constructor(dataTypes: ENTITY[], adapter: IAdapter) {
         if (!adapter) {
             throw new Error('You need to initialize Storage with adapter');
         }
@@ -25,17 +25,17 @@ export class CustomStorage {
         });
     }
 
-    get(type: Entity, key: string) {
+    get(type: ENTITY, key: string) {
         if (arguments.length > 2) {
             throw new Error('Storage::get()::Too many arguments passed');
         }
 
         const entity = this._adapter.get(type)[key];
 
-        return entity !== StatusCodes.GONE ? entity : StatusCodes.GONE;
+        return entity !== STATUS_CODES.GONE ? entity : STATUS_CODES.GONE;
     }
 
-    set(type: Entity, key: string, value: any) {
+    set(type: ENTITY, key: string, value: any) {
         if (arguments.length < 3) {
             throw new Error('Storage::set()::Not enough arguments passed');
         }
@@ -50,7 +50,7 @@ export class CustomStorage {
         );
     }
 
-    del(type: Entity, key: string) {
+    del(type: ENTITY, key: string) {
         if (arguments.length > 2) {
             throw new Error('Storage::del()::Too many arguments passed');
         }

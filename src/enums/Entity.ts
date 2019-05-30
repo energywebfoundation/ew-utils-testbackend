@@ -1,4 +1,4 @@
-export enum Entity {
+export enum ENTITY {
     PRODUCING_ASSET = 'producingAsset',
     PRODUCING_ASSET_NOT_BOUND = 'producingAssetNotBound',
     CONSUMING_ASSET = 'consumingAsset',
