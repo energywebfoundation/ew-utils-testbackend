@@ -1,4 +1,5 @@
 import { Adapter } from './adapter';
+import { StatusCodes } from '../enums';
 
 export class MemoryAdapter extends Adapter {
     _storage = {};
@@ -12,6 +13,6 @@ export class MemoryAdapter extends Adapter {
     }
 
     async del(key) {
-        delete this._storage[key];
+        this._storage[key] = StatusCodes.GONE;
     }
 }

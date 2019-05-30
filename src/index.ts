@@ -4,6 +4,7 @@ import cors from 'cors';
 import { Entity } from './entity';
 import { CustomStorage } from './storage/storage';
 import { FileAdapter } from './storage/fileAdapter';
+import { StatusCodes } from './enums';
 
 const app = express();
 
@@ -97,7 +98,13 @@ app.put('/ConsumingAsset/:id', (req, res) => {
 app.get('/Demand/:id', (req, res) => {
     console.log(`GET - Demand ${req.params.id}`);
 
-    res.send(storage.get(Entity.DEMAND, req.params.id));
+    const demand = storage.get(Entity.DEMAND, req.params.id);
+
+    if (StatusCodes[demand] != null) {
+        res.send('success');
+    } else {
+        res.status(410).end();
+    }
 });
 
 app.put('/Demand/:id', (req, res) => {

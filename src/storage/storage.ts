@@ -1,5 +1,6 @@
 import { Entity } from '../entity';
 import { IAdapter } from './adapter';
+import { StatusCodes } from '../enums';
 
 export class CustomStorage {
     _dataTypes: Entity[];
@@ -29,7 +30,9 @@ export class CustomStorage {
             throw new Error('Storage::get()::Too many arguments passed');
         }
 
-        return this._adapter.get(type)[key];
+        const entity = this._adapter.get(type)[key];
+
+        return entity !== StatusCodes.GONE ? entity : StatusCodes.GONE;
     }
 
     set(type: Entity, key: string, value: any) {
