@@ -100,11 +100,11 @@ app.get('/Demand/:id', (req, res) => {
 
     const demand = storage.get(Entity.DEMAND, req.params.id);
 
-    if (StatusCodes[demand] != null) {
-        res.send('success');
-    } else {
+    if (demand in StatusCodes) {
         res.status(410).end();
     }
+
+    res.send('success');
 });
 
 app.put('/Demand/:id', (req, res) => {
