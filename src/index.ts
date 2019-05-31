@@ -31,7 +31,7 @@ app.use(cors());
 
 app.options('*', cors());
 
-function createRoutesForEntityBountToContract(app, entity : ENTITY) {
+function createRoutesForEntityBoundToContract(app, entity : ENTITY) {
     app.get(`/${entity}/:contractAddress/:id`, (req, res) => {
         const contractAddress = req.params.contractAddress.toLowerCase();
     
@@ -87,8 +87,8 @@ function createRoutesForEntityBountToContract(app, entity : ENTITY) {
     });
 }
 
-createRoutesForEntityBountToContract(app, ENTITY.PRODUCING_ASSET);
-createRoutesForEntityBountToContract(app, ENTITY.DEMAND);
+createRoutesForEntityBoundToContract(app, ENTITY.PRODUCING_ASSET);
+createRoutesForEntityBoundToContract(app, ENTITY.DEMAND);
 
 /**
  * Producing Asset
