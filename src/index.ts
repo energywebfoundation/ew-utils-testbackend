@@ -12,6 +12,7 @@ app.use(cors());
 
 const storage = new CustomStorage(
     [
+        ENTITY.CERTIFICATE,
         ENTITY.PRODUCING_ASSET,
         ENTITY.PRODUCING_ASSET_NOT_BOUND,
         ENTITY.CONSUMING_ASSET,
