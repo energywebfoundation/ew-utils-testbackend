@@ -12,7 +12,7 @@ app.use(cors());
 
 const storage = new CustomStorage(
     [
-        ENTITY.CERTIFICATE,
+        ENTITY.TRADABLE_ENTITY,
         ENTITY.PRODUCING_ASSET,
         ENTITY.PRODUCING_ASSET_NOT_BOUND,
         ENTITY.CONSUMING_ASSET,
@@ -87,7 +87,7 @@ function createRoutesForEntityBoundToContract(app, entity: ENTITY) {
         res.send('success');
     });
 }
-createRoutesForEntityBoundToContract(app, ENTITY.CERTIFICATE);
+createRoutesForEntityBoundToContract(app, ENTITY.TRADABLE_ENTITY);
 createRoutesForEntityBoundToContract(app, ENTITY.PRODUCING_ASSET);
 createRoutesForEntityBoundToContract(app, ENTITY.DEMAND);
 

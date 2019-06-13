@@ -1,5 +1,5 @@
 export enum ENTITY {
-    CERTIFICATE = 'Certificate',
+    TRADABLE_ENTITY = 'TradableEntity',
     PRODUCING_ASSET = 'ProducingAsset',
     PRODUCING_ASSET_NOT_BOUND = 'ProducingAssetNotBound',
     CONSUMING_ASSET = 'ConsumingAsset',
