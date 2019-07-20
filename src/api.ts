@@ -204,4 +204,6 @@ export async function startAPI() {
     await storage.initialize();
 
     app.listen(3030);
+
+    return app;
 }
