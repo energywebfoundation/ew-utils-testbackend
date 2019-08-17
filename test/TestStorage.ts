@@ -5,19 +5,20 @@ import { assert } from 'chai';
 import { startAPI } from '../src/api';
 
 describe('Storage tests', async () => {
+    let apiServer;
+
     before(async () => {
-        await startAPI();
+        apiServer = await startAPI();
     });
 
     it('init Origin contract', async () => {
         const result = await axios.put(
             'http://localhost:3030/OriginContractLookupMarketLookupMapping/0xb4ec89404c4a24f4c80d157ba9ad803cbc4db614',
             {
-                "marketContractLookup": "0x665b25e0edc2d9b5dee75c5f652f92f5b58be12b"
+                marketContractLookup: '0x665b25e0edc2d9b5dee75c5f652f92f5b58be12b'
             }
         );
 
-        console.log(result);
         assert.equal(result.status, 200);
     });
 
@@ -31,5 +32,6 @@ describe('Storage tests', async () => {
         };
 
         assert.deepEqual(result.data, expectedResult);
+        apiServer.close();
     });
 });
