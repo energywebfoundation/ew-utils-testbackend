@@ -11,6 +11,10 @@ describe('Storage tests', async () => {
         apiServer = await startAPI();
     });
 
+    after(() => {
+        apiServer.close();
+    });
+
     it('init Origin contract', async () => {
         const result = await axios.put(
             'http://localhost:3030/OriginContractLookupMarketLookupMapping/0xb4ec89404c4a24f4c80d157ba9ad803cbc4db614',
@@ -32,6 +36,5 @@ describe('Storage tests', async () => {
         };
 
         assert.deepEqual(result.data, expectedResult);
-        apiServer.close();
     });
 });
