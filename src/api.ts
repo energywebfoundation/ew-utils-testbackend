@@ -181,26 +181,26 @@ export async function startAPI() {
             )
         );
     });
-    
+
     app.put('/OriginContractLookupMarketLookupMapping/:id', (req, res) => {
         console.log(`PUT - OriginContractLookupMarketLookupMapping ${req.params.id}`);
-    
+
         storage.set(ENTITY.ORIGIN_LOOKUP_TO_MARKET_LOOKUP_MAPPING, req.params.id && req.params.id.toLowerCase(), req.body);
-    
+
         res.send('success');
     });
-    
+
     app.get('/OriginContractLookupAssetLookupMapping/:id', (req, res) => {
         console.log(`GET - OriginContractLookupAssetLookupMapping ${req.params.id}`);
-    
+
         res.send(storage.get(ENTITY.ORIGIN_LOOKUP_TO_ASSET_LOOKUP_MAPPING, req.params.id && req.params.id.toLowerCase()));
     });
-    
+
     app.put('/OriginContractLookupAssetLookupMapping/:id', (req, res) => {
         console.log(`PUT - OriginContractLookupAssetLookupMapping ${req.params.id}`);
-    
+
         storage.set(ENTITY.ORIGIN_LOOKUP_TO_ASSET_LOOKUP_MAPPING, req.params.id && req.params.id.toLowerCase(), req.body);
-    
+
         res.send('success');
     });
 
