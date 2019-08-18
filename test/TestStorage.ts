@@ -15,26 +15,21 @@ describe('Storage tests', async () => {
         apiServer.close();
     });
 
-    it('init Origin contract', async () => {
-        const result = await axios.put(
+    it('gets all Origin contracts', async () => {
+        const putResult = await axios.put(
             'http://localhost:3030/OriginContractLookupMarketLookupMapping/0xb4ec89404c4a24f4c80d157ba9ad803cbc4db614',
             {
                 marketContractLookup: '0x665b25e0edc2d9b5dee75c5f652f92f5b58be12b'
             }
         );
+        assert.equal(putResult.status, 200);
 
-        assert.equal(result.status, 200);
-    });
-
-    it('gets all Origin contracts', async () => {
-        const result = await axios.get('http://localhost:3030/OriginContractLookupMarketLookupMapping');
-
+        const getResult = await axios.get('http://localhost:3030/OriginContractLookupMarketLookupMapping');
         const expectedResult = {
             '0xb4ec89404c4a24f4c80d157ba9ad803cbc4db614': {
                 marketContractLookup: '0x665b25e0edc2d9b5dee75c5f652f92f5b58be12b'
             }
         };
-
-        assert.deepEqual(result.data, expectedResult);
+        assert.deepEqual(getResult.data, expectedResult);
     });
 });
