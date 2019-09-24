@@ -17,6 +17,7 @@ export async function startAPI() {
             ENTITY.PRODUCING_ASSET,
             ENTITY.PRODUCING_ASSET_NOT_BOUND,
             ENTITY.CONSUMING_ASSET,
+            ENTITY.CONSUMING_ASSET_NOT_BOUND,
             ENTITY.DEMAND,
             ENTITY.SUPPLY,
             ENTITY.AGREEMENT,
@@ -90,6 +91,7 @@ export async function startAPI() {
     }
     createRoutesForEntityBoundToContract(app, ENTITY.TRADABLE_ENTITY);
     createRoutesForEntityBoundToContract(app, ENTITY.PRODUCING_ASSET);
+    createRoutesForEntityBoundToContract(app, ENTITY.CONSUMING_ASSET);
     createRoutesForEntityBoundToContract(app, ENTITY.DEMAND);
 
     /**
@@ -112,14 +114,14 @@ export async function startAPI() {
      * Consuming Asset
      */
     app.get('/ConsumingAsset/:id', (req, res) => {
-        console.log(`GET - ConsumingAsset ${req.params.id}`);
-        res.send(storage.get(ENTITY.CONSUMING_ASSET, req.params.id));
+        console.log(`GET - ConsumingAssetNotBound ${req.params.id}`);
+        res.send(storage.get(ENTITY.CONSUMING_ASSET_NOT_BOUND, req.params.id));
     });
 
     app.put('/ConsumingAsset/:id', (req, res) => {
-        console.log(`PUT - ConsumingAsset ${req.params.id}`);
+        console.log(`PUT - ConsumingAssetNotBound ${req.params.id}`);
 
-        storage.set(ENTITY.CONSUMING_ASSET, req.params.id, req.body);
+        storage.set(ENTITY.CONSUMING_ASSET_NOT_BOUND, req.params.id, req.body);
 
         res.send('success');
     });
